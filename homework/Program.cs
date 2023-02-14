@@ -17,9 +17,24 @@ int CountThreeSymbolWords(string[] userArray, int wordSize)
     }
     return count;
 }
-
+string[] FillThreeWordsArray(string[] userArray, int sizeThreeWordsArray, int sizeOfWord)
+{
+    string[] threeWordsArray = new string[sizeThreeWordsArray];
+    int j = 0;
+    for (int i = 0; i < userArray.Length; i++)
+    {
+        if (userArray[i].Length <= sizeOfWord)
+        {
+            threeWordsArray[j] = userArray[i];
+            j++;
+        }
+    }
+    return threeWordsArray;
+}
 
 int sizeOfWords=3;
 string[] userWordsArray = FillUserArray("Введите строку элемента массива №", 5);
 Console.WriteLine($"Ваш первоначальный массив [{String.Join(", ", userWordsArray)}]");
 int sizeThreeWordsSymbols = CountThreeSymbolWords(userWordsArray, sizeOfWords);
+string[] arrayFromThreeWords = FillThreeWordsArray(userWordsArray, sizeThreeWordsSymbols, sizeOfWords);
+Console.WriteLine($"Новый массив с длиной строк до трех (включительно) символов [{String.Join(", ", arrayFromThreeWords)}]");
